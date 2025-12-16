@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# A Bash script that loops indefinitely and prints "I am invincible!!!" when receiving SIGTERM
+
+# Trap SIGTERM signal and print the message
+trap 'echo "I am invincible!!!"' SIGTERM
+
+# Infinite loop
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done

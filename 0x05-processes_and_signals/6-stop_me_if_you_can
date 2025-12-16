@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # A Bash script that stops the 4-to_infinity_and_beyond process without using kill or killall
 
-# Loop over all PIDs of 4-to_infinity_and_beyond, excluding the current script's PID
-for PID in $(pgrep -f 4-to_infinity_and_beyond); do
+# Use pgrep but exclude the current script PID
+for PID in $(pgrep -x 4-to_infinity_and_beyond); do
+    # Just to be safe, skip current script's PID
     if [ "$PID" -ne "$$" ]; then
-        # harmless stop via /proc interface (oom_score_adj)
+        # harmless stop via /proc interface
         echo 15 > /proc/"$PID"/oom_score_adj
     fi
 done

@@ -1,0 +1,3 @@
+#!/bin/bash
+# Delete all regular .js files in current directory and subdirectories
+find . -type f -name "*.js" -exec rm {} \;
